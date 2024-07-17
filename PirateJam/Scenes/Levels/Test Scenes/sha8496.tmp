@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqh2lariv0ual"]
+
+[ext_resource type="PackedScene" uid="uid://dxjn2mqcf37a8" path="res://Scenes/Components/shadow_object_creator.tscn" id="1_pt2v6"]
+[ext_resource type="PackedScene" uid="uid://8yxj0itrj0qm" path="res://Scenes/Objects/light.tscn" id="2_gbjhc"]
+[ext_resource type="Texture2D" uid="uid://1fn8qddiq3no" path="res://Graphics/icon.svg" id="3_x17fi"]
+
+[node name="ShadowObjctTest" type="Node2D"]
+
+[node name="ShadowObjectCreator" parent="." instance=ExtResource("1_pt2v6")]
+
+[node name="Light" parent="." instance=ExtResource("2_gbjhc")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-955, 1148)
+scale = Vector2(27.2344, 27.2344)
+texture = ExtResource("3_x17fi")
+
+[node name="ShadowObjects" type="Node2D" parent="."]

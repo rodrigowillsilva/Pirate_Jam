@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxjn2mqcf37a8"]
+
+[ext_resource type="Script" path="res://Scripts/shadow_object_creator.gd" id="1_puty6"]
+
+[node name="ShadowObjectCreator" type="Node2D"]
+script = ExtResource("1_puty6")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(-22, 49)
