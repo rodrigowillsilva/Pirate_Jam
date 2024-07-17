@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://ck6epstetfshl"]
+[gd_scene load_steps=3 format=3 uid="uid://ck6epstetfshl"]
 
 [ext_resource type="Script" path="res://Scripts/shadow_object.gd" id="1_8kbgi"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0ljqt"]
+polygon = PackedVector2Array(0, 0, 0, 0)
 
 [node name="ShadowObject" type="StaticBody2D"]
 script = ExtResource("1_8kbgi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_0ljqt")
