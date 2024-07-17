@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://ck6epstetfshl"]
+[gd_scene load_steps=2 format=3 uid="uid://ck6epstetfshl"]
+
+[ext_resource type="Script" path="res://Scripts/shadow_object.gd" id="1_8kbgi"]
 
 [node name="ShadowObject" type="StaticBody2D"]
+script = ExtResource("1_8kbgi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
