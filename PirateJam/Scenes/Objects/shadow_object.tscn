@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ck6epstetfshl"]
+
+[node name="ShadowObject" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
