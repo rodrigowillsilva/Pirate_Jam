@@ -1,0 +1,203 @@
+[gd_scene load_steps=4 format=3 uid="uid://b34246moptxfd"]
+
+[ext_resource type="Script" path="res://Scripts/rune_table.gd" id="1_nh0xh"]
+
+[sub_resource type="Gradient" id="Gradient_nm1ch"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 0.270588)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jtggl"]
+gradient = SubResource("Gradient_nm1ch")
+width = 32
+height = 32
+
+[node name="RuneTable" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_nh0xh")
+shadow_rune_draws = Array[PackedStringArray]([PackedStringArray("line", "3", "4", "5"), PackedStringArray("attack", "6", "1", "8")])
+
+[node name="ShadowArea" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_right = 350.0
+grow_vertical = 2
+color = Color(1, 1, 1, 0.0431373)
+
+[node name="ShadowRunes" type="GridContainer" parent="ShadowArea"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="ShadowButton0" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="ShadowButton1" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="ShadowButton2" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="ShadowButton3" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="ShadowButton4" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="ShadowButton5" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="ShadowButton6" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="ShadowButton7" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="ShadowButton8" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightArea" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -350.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(1, 1, 1, 0.0431373)
+
+[node name="LightRunes" type="GridContainer" parent="LightArea"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="LightButton0" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightButton1" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightButton2" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightButton3" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightButton4" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightButton5" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightButton6" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightButton7" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightButton8" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="Line2D" type="Line2D" parent="."]
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
