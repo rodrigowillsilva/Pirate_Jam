@@ -1,3 +1,12 @@
-[gd_scene format=3 uid="uid://jvtabastfhij"]
+[gd_scene load_steps=2 format=3 uid="uid://jvtabastfhij"]
+
+[ext_resource type="PackedScene" uid="uid://b34246moptxfd" path="res://Scenes/UIs/rune_table.tscn" id="1_yc4io"]
 
 [node name="Level" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-898, 216)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RuneTable" parent="CanvasLayer" instance=ExtResource("1_yc4io")]
