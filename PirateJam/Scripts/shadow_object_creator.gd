@@ -1,9 +1,11 @@
 extends Node2D
 
-signal end_draw
+signal end_spell
 
 var shadow_object_p: PackedScene = preload("res://Scenes/Objects/shadow_object.tscn")
 @export var ray: RayCast2D
+
+var active: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,8 +16,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if not active: return
+	
+	print("active")
 	if Input.is_action_just_pressed("mouse1"):
-		start_draw()
+		start_draw()	
 	
 	if Input.is_action_just_released("mouse1"):
 		stop_draw()	
@@ -37,12 +42,19 @@ func start_draw() -> void:
 			shadow_object.position = Vector2.ZERO
 
 			# Add the shadow object to the scene
-			var soNode = get_node("..")
+			var soNode = get_tree().root
 			soNode.add_child(shadow_object)
 
 			#Start drawing the shadow object
 			shadow_object.start_draw(get_global_mouse_position(), light)
-			end_draw.connect(shadow_object.stop_draw)
+			end_spell.connect(shadow_object.stop_draw)
 
 func stop_draw() -> void:
-	end_draw.emit()	
+	active = false
+	end_spell.emit()	
+
+
+func _on_rune_table_end_rune_draw(rune):
+	if rune == "line":
+		active = true
+

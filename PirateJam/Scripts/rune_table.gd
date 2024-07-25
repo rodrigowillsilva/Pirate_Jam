@@ -12,8 +12,12 @@ var rune_line: Line2D
 var lightButtons: Array = []
 var shadowButtons: Array = []
 var drawing: bool = false
+var casting: bool = false
 
 var rune_graph: Array = []
+
+var animation_player: AnimationPlayer
+var animation_player2: AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,6 +28,10 @@ func _ready():
 	# Create a graph for the shadow and light runes
 	rune_graph.append([])
 	rune_graph.append([])
+
+	# Reference the AnimationPlayer node
+	animation_player = $AnimationPlayer
+	animation_player2 = $AnimationPlayer2
 
 	# Connect the button_down signal to the on_button_down function
 	for b in $ShadowArea/ShadowRunes.get_children():
@@ -39,6 +47,10 @@ func _ready():
 			b.button_down.connect(Callable(on_button_down).bind(b))
 			b.button_up.connect(Callable(on_button_up).bind(b))
 			b.mouse_entered.connect(Callable(hover).bind(b))
+
+	# Get all spells from the spells group node and subscribe to the end_spell signal
+	for spell in get_tree().get_nodes_in_group("Spells"):
+		spell.end_spell.connect(end_spell)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -66,17 +78,18 @@ func on_button_up(button: TextureButton) -> void:
 	#remove the last point from the line
 	rune_line.remove_point(rune_line.points.size() - 1)
 
-	# Emit the end_rune_draw signal
-	var final_rune_draw = get_final_rune_draw(get_node_type())
-	print(final_rune_draw)
-	end_rune_draw.emit(final_rune_draw)
-
-	# Clear the graph
-	rune_graph[0].clear()
-	rune_graph[1].clear()
+	$Timer.start()
+	
+	#var final_rune_draw = get_final_rune_draw(get_node_type())
+	#print(final_rune_draw)
+	#end_rune_draw.emit(final_rune_draw)
+	#
+	## Clear the graph
+	#rune_graph[0].clear()
+	#rune_graph[1].clear()
 
 func get_node_type() -> String:
-	if get_global_mouse_position().x < get_viewport().size.x / 2:
+	if get_global_mouse_position().x > get_viewport().size.x / 2:
 		return "shadow"
 	else:
 		return "light"
@@ -125,6 +138,7 @@ func get_final_rune_draw(type: String) -> String:
 			
 			if rune_draw_result != "none":
 				break
+
 	
 	return rune_draw_result
 
@@ -146,3 +160,62 @@ func hover(button: TextureButton) -> void:
 
 			# Add the node to the graph
 			add_node(get_node_type(), button.get_name().to_lower()[ - 1])
+
+
+########################################
+# This function is only used as a placeholder because of the
+# timing problem of button up and the spells that use the mouse
+# on the sme frame
+########################################
+func _on_timer_timeout():
+	var final_rune_draw = get_final_rune_draw(get_node_type())
+	print(final_rune_draw)
+
+	# Clear the graph
+	rune_graph[0].clear()
+	rune_graph[1].clear()
+	
+	#clear the rune draw
+	rune_line.clear_points()
+	
+
+	end_rune_draw.emit(final_rune_draw)
+	
+	if final_rune_draw != "none":
+		hide_light_runes()
+		hide_shadow_runes()
+		casting = true
+	
+########################################
+
+func _on_shadow_reveal_mouse_entered():
+	if casting: return
+	
+	animation_player.speed_scale = 1
+	animation_player.play("show_shadow")
+	if not $HideShadowLight.is_connected("mouse_entered", hide_shadow_runes):	
+		$HideShadowLight.mouse_entered.connect(hide_shadow_runes)
+
+func _on_light_reveal_mouse_entered():
+	if casting: return
+	
+	animation_player2.speed_scale = 1
+	animation_player2.play("show_light")
+	if not $HideShadowLight.is_connected("mouse_entered", hide_light_runes):
+		$HideShadowLight.mouse_entered.connect(hide_light_runes)
+
+func hide_shadow_runes():
+	if $HideShadowLight.is_connected("mouse_entered", hide_shadow_runes):
+		animation_player.speed_scale = 2
+		animation_player.play_backwards("show_shadow")
+		$HideShadowLight.disconnect("mouse_entered", hide_shadow_runes)
+		
+func hide_light_runes():
+	if $HideShadowLight.is_connected("mouse_entered", hide_light_runes):
+		animation_player2.speed_scale = 2
+		animation_player2.play_backwards("show_light")
+		$HideShadowLight.disconnect("mouse_entered", hide_light_runes)
+
+func end_spell():
+	casting = false
+	

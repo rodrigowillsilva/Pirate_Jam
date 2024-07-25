@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://jvtabastfhij"]
+
+[ext_resource type="PackedScene" uid="uid://b34246moptxfd" path="res://Scenes/UIs/rune_table.tscn" id="1_yc4io"]
+[ext_resource type="PackedScene" uid="uid://bcg0vjb1md6jv" path="res://Scenes/player.tscn" id="2_76wbi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21wpn"]
+size = Vector2(126, 126)
+
+[node name="Level" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(72, 117)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="RuneTable" parent="CanvasLayer" instance=ExtResource("1_yc4io")]
+
+[node name="Player" parent="." instance=ExtResource("2_76wbi")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_21wpn")
