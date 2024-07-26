@@ -149,7 +149,7 @@ occluder = SubResource("OccluderPolygon2D_roasn")
 position = Vector2(21, -114)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-light_mask = 0
+light_mask = 2
 position = Vector2(-813, 441)
 scale = Vector2(15.425, 1)
 texture = SubResource("GradientTexture2D_bit23")
@@ -161,6 +161,7 @@ build_mode = 1
 polygon = PackedVector2Array(31.9611, -28, 31.8963, 31, -32.3501, 31, -32.0259, -31)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+light_mask = 2
 position = Vector2(-1435, 143)
 rotation = -2.60247
 scale = Vector2(20, 1)
@@ -180,7 +181,7 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_tc28e")
 texture_scale = 50.0
 
-[node name="PointLight2D2" type="PointLight2D" parent="." groups=["Lights"]]
+[node name="PointLight2D2" type="PointLight2D" parent="."]
 position = Vector2(2, 6)
 energy = 2.3
 range_item_cull_mask = 2

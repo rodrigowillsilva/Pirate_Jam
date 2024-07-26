@@ -18,7 +18,6 @@ script = ExtResource("1_8kbgi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("SegmentShape2D_p0jhd")
-one_way_collision = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("SegmentShape2D_wdrew")
