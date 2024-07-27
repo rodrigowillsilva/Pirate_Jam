@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://1fn8qddiq3no" path="res://Graphics/icon.svg" id="4_6dv4r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqaff"]
-size = Vector2(127, 123)
+size = Vector2(43, 102)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_roasn"]
-polygon = PackedVector2Array(-58, -58, 58, -58, 58, 55, -58, 55)
+polygon = PackedVector2Array(-16, -25, -9, -43, 9, -43, 19, -27, 16, -13, 12, 0, 14, 16, 18, 30, 16, 40, -6, 42, -14, 39, -8, 18, -9, 8, -8, -7, -10, -14)
 
 [sub_resource type="Gradient" id="Gradient_upxgy"]
 offsets = PackedFloat32Array(1)
@@ -116,7 +116,7 @@ sources/0 = SubResource("TileSetAtlasSource_fb07p")
 [node name="Level" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.314387, 0.2394, 0.38, 1)
+color = Color(0.685112, 0.592569, 0.771146, 1)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -1347.0
@@ -135,7 +135,7 @@ floor_snap_length = 16.7
 safe_margin = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-1, 0)
+position = Vector2(2.5, -1)
 shape = SubResource("RectangleShape2D_nqaff")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Player"]
@@ -146,7 +146,9 @@ occluder = SubResource("OccluderPolygon2D_roasn")
 [node name="ShadowObjectCreator" parent="Player" groups=["Spells"] instance=ExtResource("3_umeql")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(21, -114)
+position = Vector2(-1, -38)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 light_mask = 2
@@ -182,7 +184,7 @@ texture = SubResource("GradientTexture2D_tc28e")
 texture_scale = 50.0
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(2, 6)
+position = Vector2(18, 30)
 energy = 2.3
 range_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_tc28e")
@@ -246,4 +248,6 @@ shape = SubResource("SegmentShape2D_hixoe")
 tile_set = SubResource("TileSet_hel15")
 format = 2
 
+[connection signal="end_rune_draw" from="CanvasLayer/RuneTable" to="Player" method="_on_rune_table_end_rune_draw"]
 [connection signal="end_rune_draw" from="CanvasLayer/RuneTable" to="Player/ShadowObjectCreator" method="_on_rune_table_end_rune_draw"]
+[connection signal="end_spell" from="Player/ShadowObjectCreator" to="Player" method="_on_shadow_object_creator_end_spell"]

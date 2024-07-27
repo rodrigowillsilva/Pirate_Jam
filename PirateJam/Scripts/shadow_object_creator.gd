@@ -1,6 +1,7 @@
 extends Node2D
 
 signal end_spell
+signal clear_shadows
 
 var shadow_object_p: PackedScene = preload("res://Scenes/Objects/shadow_object.tscn")
 @export var ray: RayCast2D
@@ -16,6 +17,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	# if the player is not drawing, return
 	if not active: return
 	
 	print("active")

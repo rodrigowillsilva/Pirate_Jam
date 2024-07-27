@@ -8,6 +8,8 @@ class_name StateMachine
 var states: Dictionary = {}
 var current_state: State
 
+var side:= 0
+var livro:= false
 
 func _ready() -> void:
 	for child in get_children():
@@ -22,6 +24,36 @@ func _ready() -> void:
 		current_state.enter()
 
 func _process(_delta: float) -> void:
+	####################################################
+	#Rodrigo: This should be done in another script
+	####################################################
+	
+	#Control the animation of the player
+	if not livro:
+		if player.velocity.y < 0 and get_node("..").get_node("AnimatedSprite2D").animation != "pulo_0":
+			get_node("..").get_node("AnimatedSprite2D").play("pulo_0")
+		elif player.velocity.y > 0 and get_node("..").get_node("AnimatedSprite2D").animation != "pulo_1":
+			get_node("..").get_node("AnimatedSprite2D").play("pulo_1")
+		
+		if player.velocity.x < 0:
+			if player.velocity.y == 0:
+				get_node("..").get_node("AnimatedSprite2D").play("correndo")
+			side = 0
+			get_node("..").get_node("AnimatedSprite2D").flip_h = true
+		elif player.velocity.x > 0:
+			if player.velocity.y == 0:
+				get_node("..").get_node("AnimatedSprite2D").play("correndo")
+			get_node("..").get_node("AnimatedSprite2D").flip_h = false
+			side = 1
+		elif player.velocity.x == 0 and player.velocity.y == 0:
+			get_node("..").get_node("AnimatedSprite2D").flip_h = false
+			if side == 0:
+				get_node("..").get_node("AnimatedSprite2D").play("esquerda")
+			else:
+				get_node("..").get_node("AnimatedSprite2D").play("direita")
+	elif livro:
+		get_node("..").get_node("AnimatedSprite2D").play("livro")
+	
 	if current_state:
 		current_state.update(_delta)
 
