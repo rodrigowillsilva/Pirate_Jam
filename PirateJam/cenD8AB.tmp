@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://galaxakfj14p"]
+
+[ext_resource type="Texture2D" uid="uid://1fn8qddiq3no" path="res://Graphics/icon.svg" id="1_ypqby"]
+[ext_resource type="PackedScene" uid="uid://cmpqy0u7ubu8j" path="res://shadow_enemy.tscn" id="2_cgtab"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r1l15"]
+size = Vector2(128, 128)
+
+[node name="cena_teste" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(630, 539)
+scale = Vector2(8, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_r1l15")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_ypqby")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(198, 409)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_r1l15")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+texture = ExtResource("1_ypqby")
+
+[node name="shadow_enemy" parent="." instance=ExtResource("2_cgtab")]
+position = Vector2(518, 427)
+scale = Vector2(3, 3)
