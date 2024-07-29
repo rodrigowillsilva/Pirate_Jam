@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://ck6epstetfshl"]
+
+[ext_resource type="Script" path="res://Scripts/shadow_object.gd" id="1_8kbgi"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_p0jhd"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wdrew"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_cx25p"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vgdqy"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0ljqt"]
+polygon = PackedVector2Array(0, 0, 0, 0)
+
+[node name="ShadowObject" type="StaticBody2D"]
+script = ExtResource("1_8kbgi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_p0jhd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_wdrew")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_cx25p")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_vgdqy")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_0ljqt")

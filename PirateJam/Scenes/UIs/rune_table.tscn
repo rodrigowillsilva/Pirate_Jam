@@ -1,0 +1,317 @@
+[gd_scene load_steps=8 format=3 uid="uid://b34246moptxfd"]
+
+[ext_resource type="Script" path="res://Scripts/rune_table.gd" id="1_nh0xh"]
+[ext_resource type="Animation" uid="uid://clxoi4lkt5uxp" path="res://show_light.res" id="2_fhvnb"]
+
+[sub_resource type="Gradient" id="Gradient_nm1ch"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 0.270588)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jtggl"]
+gradient = SubResource("Gradient_nm1ch")
+width = 32
+height = 32
+
+[sub_resource type="Animation" id="Animation_xh058"]
+resource_name = "show_shadow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShadowArea:offset_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [0, -350]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShadowArea/ShadowRunes:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 1),
+"transitions": PackedFloat32Array(0.267943, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f2n8i"]
+_data = {
+"show_shadow": SubResource("Animation_xh058")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ogy7u"]
+_data = {
+"show_light": ExtResource("2_fhvnb")
+}
+
+[node name="RuneTable" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_nh0xh")
+shadow_rune_draws = Array[PackedStringArray]([PackedStringArray("line", "3", "4", "5"), PackedStringArray("attack", "6", "1", "8")])
+
+[node name="ShadowArea" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(1, 1, 1, 0.0431373)
+
+[node name="ShadowRunes" type="GridContainer" parent="ShadowArea"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="ShadowButton0" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="ShadowButton1" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+focus_mode = 0
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="ShadowButton2" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+focus_mode = 0
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="ShadowButton3" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+focus_mode = 0
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="ShadowButton4" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+focus_mode = 0
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="ShadowButton5" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+focus_mode = 0
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="ShadowButton6" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+focus_mode = 0
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="ShadowButton7" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+focus_mode = 0
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="ShadowButton8" type="TextureButton" parent="ShadowArea/ShadowRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+focus_mode = 0
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightArea" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+grow_vertical = 2
+color = Color(1, 1, 1, 0.0431373)
+
+[node name="LightRunes" type="GridContainer" parent="LightArea"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="LightButton0" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightButton1" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightButton2" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightButton3" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightButton4" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightButton5" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightButton6" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightButton7" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="LightButton8" type="TextureButton" parent="LightArea/LightRunes"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+keep_pressed_outside = true
+texture_normal = SubResource("GradientTexture2D_jtggl")
+
+[node name="ShadowReveal" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = 83.0
+offset_bottom = -83.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="LightReveal" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 76.0
+offset_right = 50.0
+offset_bottom = -76.0
+grow_vertical = 2
+
+[node name="HideShadowLight" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.334
+anchor_top = 0.001
+anchor_right = 0.666
+anchor_bottom = 0.999
+offset_left = 0.47998
+offset_top = 0.28
+offset_right = -0.47998
+offset_bottom = -0.280029
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="HideShadowLight"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.0980392)
+
+[node name="Line2D" type="Line2D" parent="."]
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f2n8i")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ogy7u")
+}
+
+[connection signal="mouse_entered" from="ShadowArea" to="." method="_on_shadow_area_mouse_entered"]
+[connection signal="mouse_exited" from="ShadowArea" to="." method="_on_shadow_area_mouse_exited"]
+[connection signal="mouse_entered" from="ShadowReveal" to="." method="_on_shadow_reveal_mouse_entered"]
+[connection signal="mouse_exited" from="ShadowReveal" to="." method="_on_shadow_reveal_mouse_exited"]
+[connection signal="mouse_entered" from="LightReveal" to="." method="_on_light_reveal_mouse_entered"]
+[connection signal="mouse_exited" from="LightReveal" to="." method="_on_light_reveal_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

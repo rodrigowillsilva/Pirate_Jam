@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcg0vjb1md6jv"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_wfl5q"]
+[ext_resource type="Script" path="res://Scripts/state_machine.gd" id="2_pjoh1"]
+[ext_resource type="Script" path="res://Scripts/moving_state.gd" id="3_8648w"]
+[ext_resource type="Texture2D" uid="uid://1fn8qddiq3no" path="res://Graphics/icon.svg" id="4_jenh8"]
+
+[node name="Player" type="CharacterBody2D"]
+floor_constant_speed = true
+script = ExtResource("1_wfl5q")
+
+[node name="State Machine" type="Node" parent="."]
+script = ExtResource("2_pjoh1")
+
+[node name="Moving" type="Node" parent="State Machine"]
+script = ExtResource("3_8648w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_jenh8")
