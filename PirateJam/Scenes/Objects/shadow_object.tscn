@@ -30,3 +30,5 @@ shape = SubResource("SegmentShape2D_vgdqy")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_0ljqt")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]

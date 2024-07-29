@@ -108,8 +108,8 @@ func get_final_rune_draw(type: String) -> String:
 
 		for i in range(1, graph.size()):
 			# Check if its the last node
-			print(rune_draw[i])
-			print(graph[i - 1])
+			#print(rune_draw[i])
+			#print(graph[i - 1])
 			if graph[i - 1] != rune_draw[i]:
 				break
 
@@ -128,8 +128,8 @@ func get_final_rune_draw(type: String) -> String:
 
 			for i in range(graph.size(), 0, -1):
 				# Check if its the last node
-				print(graph[graph.size() - i])
-				print(rune_draw[i])
+				#print(graph[graph.size() - i])
+				#print(rune_draw[i])
 				if graph[graph.size() - i] != rune_draw[i]:
 					break
 				
@@ -169,7 +169,7 @@ func hover(button: TextureButton) -> void:
 ########################################
 func _on_timer_timeout():
 	var final_rune_draw = get_final_rune_draw(get_node_type())
-	print(final_rune_draw)
+	#print(final_rune_draw)
 
 	# Clear the graph
 	rune_graph[0].clear()

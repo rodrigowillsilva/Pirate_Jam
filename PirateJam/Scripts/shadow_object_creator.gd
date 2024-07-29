@@ -28,28 +28,55 @@ func _process(_delta):
 		stop_draw()	
 
 func start_draw() -> void:
+	var sucess:= true
 	# get all the lights in the Lights group that see the mouse position
-
 	for light in get_tree().get_nodes_in_group("Lights"):
-		# ray cant from the light to the mouse position
-		ray.global_position = get_global_mouse_position()
-		ray.target_position = light.global_position
-		ray.force_update_transform()
-		ray.force_raycast_update()
+		if light is PointLight2D:
+			# raycast from the light to the mouse position
+			ray.global_position = get_global_mouse_position()
+			ray.target_position = light.global_position
+			ray.force_update_transform()
+			ray.force_raycast_update()
 
-		# if it doenst hit anything, add the light to the list
-		if not ray.is_colliding():
-			# Create a new shadow object
-			var shadow_object: ShadowObject = shadow_object_p.instantiate() as ShadowObject
-			shadow_object.position = Vector2.ZERO
+			# if it doenst hit anything, add the light to the list
+			if not ray.is_colliding():
+				# Create a new shadow object
+				var shadow_object: ShadowObject = shadow_object_p.instantiate() as ShadowObject
+				shadow_object.position = Vector2.ZERO
 
-			# Add the shadow object to the scene
-			var soNode = get_tree().root
-			soNode.add_child(shadow_object)
+				# Add the shadow object to the scene
+				var soNode = get_tree().root
+				soNode.add_child(shadow_object)
 
-			#Start drawing the shadow object
-			shadow_object.start_draw(get_global_mouse_position(), light)
-			end_spell.connect(shadow_object.stop_draw)
+				#Start drawing the shadow object
+				shadow_object.start_draw(get_global_mouse_position(), light)
+				end_spell.connect(shadow_object.stop_draw)
+				sucess = true
+		else:
+			# raycast from the light to the mouse position
+			ray.global_position = get_global_mouse_position()
+			ray.target_position = -Vector2(0, 1000).rotated(light.global_rotation)
+			print(rad_to_deg(light.rotation))
+			ray.force_update_transform()
+			ray.force_raycast_update()
+
+			# if it does hit the area2d, add the light to the list
+			if not ray.is_colliding():
+				# Create a new shadow object
+				var shadow_object: ShadowObject = shadow_object_p.instantiate() as ShadowObject
+				shadow_object.position = Vector2.ZERO
+
+				# Add the shadow object to the scene
+				var soNode = get_tree().root
+				soNode.add_child(shadow_object)
+
+				#Start drawing the shadow object
+				shadow_object.start_draw(get_global_mouse_position(), light)
+				end_spell.connect(shadow_object.stop_draw)
+				sucess = true
+			
+		if not sucess:
+			stop_draw()
 
 func stop_draw() -> void:
 	active = false
@@ -59,4 +86,3 @@ func stop_draw() -> void:
 func _on_rune_table_end_rune_draw(rune):
 	if rune == "line":
 		active = true
-

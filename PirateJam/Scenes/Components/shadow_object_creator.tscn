@@ -7,4 +7,7 @@ script = ExtResource("1_puty6")
 ray = NodePath("RayCast2D")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(-22, 49)
+target_position = Vector2(1, -1247)
+collision_mask = 128
+collide_with_areas = true
+collide_with_bodies = false
