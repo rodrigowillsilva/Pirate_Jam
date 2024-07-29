@@ -152,8 +152,8 @@ position_smoothing_speed = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 light_mask = 2
-position = Vector2(-813, 441)
-scale = Vector2(15.425, 1)
+position = Vector2(-812.7, 441)
+scale = Vector2(15.4156, 1)
 texture = SubResource("GradientTexture2D_bit23")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
@@ -175,13 +175,6 @@ physics_material_override = SubResource("PhysicsMaterial_x6y48")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/StaticBody2D"]
 position = Vector2(-6.55651e-07, -1)
 shape = SubResource("RectangleShape2D_2rs8p")
-
-[node name="PointLight2D" type="PointLight2D" parent="." groups=["Lights"]]
-position = Vector2(1, 3)
-energy = 2.3
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_tc28e")
-texture_scale = 50.0
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 position = Vector2(18, 30)
@@ -247,6 +240,37 @@ shape = SubResource("SegmentShape2D_hixoe")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_hel15")
 format = 2
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." groups=["Lights"]]
+rotation = 0.785398
+shadow_enabled = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+light_mask = 2
+position = Vector2(-84, -591)
+rotation = -3.14742
+scale = Vector2(94.8911, 1)
+texture = SubResource("GradientTexture2D_bit23")
+
+[node name="StaticBody2D" type="Area2D" parent="Sprite2D6"]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D6/StaticBody2D"]
+position = Vector2(-6.55651e-07, -1)
+shape = SubResource("RectangleShape2D_2rs8p")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(-687, 85)
+rotation = -3.13105
+scale = Vector2(20, 1)
+texture = SubResource("GradientTexture2D_bit23")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D7"]
+physics_material_override = SubResource("PhysicsMaterial_x6y48")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D7/StaticBody2D"]
+position = Vector2(-6.55651e-07, -1)
+shape = SubResource("RectangleShape2D_2rs8p")
 
 [connection signal="end_rune_draw" from="CanvasLayer/RuneTable" to="Player" method="_on_rune_table_end_rune_draw"]
 [connection signal="end_rune_draw" from="CanvasLayer/RuneTable" to="Player/ShadowObjectCreator" method="_on_rune_table_end_rune_draw"]

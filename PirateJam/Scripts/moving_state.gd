@@ -14,7 +14,7 @@ var input_dir: Vector2 = Vector2.ZERO
 
 func init():
 	player = state_machine.player
-	print("Player: ", player)
+	#print("Player: ", player)
 
 func enter(_msg:={}) -> void:
 	pass
@@ -35,8 +35,8 @@ func physics_update(delta: float) -> void:
 	velocity = player.velocity
 	#print(player.velocity, "real")
 	#print(player.get_real_velocity())
-	print(player.get_floor_angle() * 180 / PI)
-	print(player.get_floor_normal())
+	#print(player.get_floor_angle() * 180 / PI)
+	#print(player.get_floor_normal())
 	
 
 func input() -> Vector2:
