@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
+class_name alchemist
+
 var state_machime: StateMachine
 
 func _ready():
 	state_machime = $"State Machine"
-	
 func _on_rune_table_end_rune_draw(rune):
 	match rune:
 		"line":

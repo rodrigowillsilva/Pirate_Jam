@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://berogrj7o6mcd"]
+[gd_scene load_steps=33 format=3 uid="uid://berogrj7o6mcd"]
 
+[ext_resource type="Script" path="res://furlan_levels/level_furlan5.gd" id="1_jxenw"]
 [ext_resource type="PackedScene" uid="uid://b34246moptxfd" path="res://Scenes/UIs/rune_table.tscn" id="1_rpvq6"]
 [ext_resource type="PackedScene" uid="uid://bcg0vjb1md6jv" path="res://Scenes/player.tscn" id="2_auhav"]
 [ext_resource type="PackedScene" uid="uid://dxjn2mqcf37a8" path="res://Scenes/Components/shadow_object_creator.tscn" id="3_s4u7o"]
@@ -151,8 +152,17 @@ fill_to = Vector2(1, 1)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_cjc5h"]
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_rj0ss"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_oajoy"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_68vn5"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_whbdl"]
+
 [node name="Level_5" type="Node2D"]
 z_index = 1
+script = ExtResource("1_jxenw")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.448807, 0.366742, 0.211086, 1)
@@ -266,6 +276,54 @@ rotation = -1.5708
 scale = Vector2(1, 10000)
 shape = SubResource("SegmentShape2D_cjc5h")
 
+[node name="void_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="void_area"]
+position = Vector2(0, 800)
+rotation = -1.5708
+scale = Vector2(1, 1000)
+shape = SubResource("SegmentShape2D_rj0ss")
+
+[node name="checkpoint_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="checkpoint_area"]
+position = Vector2(1002, 584)
+rotation = 3.14159
+scale = Vector2(1, 20)
+shape = SubResource("SegmentShape2D_oajoy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="checkpoint_area"]
+position = Vector2(3100, 200)
+rotation = 3.14159
+scale = Vector2(1, 20)
+shape = SubResource("SegmentShape2D_oajoy")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="checkpoint_area"]
+position = Vector2(5300, 584)
+rotation = 3.14159
+scale = Vector2(1, 20)
+shape = SubResource("SegmentShape2D_oajoy")
+
+[node name="end_camera_area" type="Area2D" parent="."]
+position = Vector2(8200, 584)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="end_camera_area"]
+rotation = 3.14159
+scale = Vector2(1, 20)
+shape = SubResource("SegmentShape2D_68vn5")
+
+[node name="level_end_area" type="Area2D" parent="."]
+position = Vector2(9000, 584)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="level_end_area"]
+rotation = 3.14159
+scale = Vector2(1, 20)
+shape = SubResource("SegmentShape2D_whbdl")
+
 [connection signal="end_rune_draw" from="CanvasLayer/RuneTable" to="Player" method="_on_rune_table_end_rune_draw"]
 [connection signal="end_rune_draw" from="CanvasLayer/RuneTable" to="Player/ShadowObjectCreator" method="_on_rune_table_end_rune_draw"]
 [connection signal="end_spell" from="Player/ShadowObjectCreator" to="Player" method="_on_shadow_object_creator_end_spell"]
+[connection signal="body_entered" from="void_area" to="CanvasLayer/RuneTable" method="_on_void_area_body_entered"]
+[connection signal="body_entered" from="checkpoint_area" to="CanvasLayer/RuneTable" method="_on_checkpoint_area_body_entered"]
+[connection signal="body_entered" from="end_camera_area" to="CanvasLayer/RuneTable" method="_on_end_camera_area_body_entered"]
+[connection signal="body_entered" from="level_end_area" to="CanvasLayer/RuneTable" method="_on_level_end_area_body_entered"]

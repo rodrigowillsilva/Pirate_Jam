@@ -223,3 +223,19 @@ func end_spell():
 
 func _on_end_rune_draw(rune):
 	pass # Replace with function body.
+
+
+func _on_level_end_area_body_entered(body):
+	pass # Replace with function body.
+
+
+func _on_end_camera_area_body_entered(body):
+	pass # Replace with function body.
+
+
+func _on_checkpoint_area_body_entered(body):
+	pass # Replace with function body.
+
+
+func _on_void_area_body_entered(body):
+	pass # Replace with function body.
