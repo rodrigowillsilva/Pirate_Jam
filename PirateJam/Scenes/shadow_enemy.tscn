@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://cmpqy0u7ubu8j"]
 
-[ext_resource type="Script" path="res://shadow_enemy.gd" id="1_f6uuh"]
+[ext_resource type="Script" path="res://Scripts/shadow_enemy.gd" id="1_f6uuh"]
 [ext_resource type="Texture2D" uid="uid://bu3cjmthpduyt" path="res://Graphics/enemies/bixo2.png" id="1_uu6bj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l1ma"]

@@ -219,3 +219,7 @@ func hide_light_runes():
 func end_spell():
 	casting = false
 	
+
+
+func _on_end_rune_draw(rune):
+	pass # Replace with function body.
