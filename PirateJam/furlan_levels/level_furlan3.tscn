@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b88dfk8ytbvdo"]
+[gd_scene load_steps=24 format=3 uid="uid://b88dfk8ytbvdo"]
 
 [ext_resource type="PackedScene" uid="uid://b34246moptxfd" path="res://Scenes/UIs/rune_table.tscn" id="1_w81fk"]
 [ext_resource type="PackedScene" uid="uid://bcg0vjb1md6jv" path="res://Scenes/player.tscn" id="2_yymde"]
@@ -49,6 +49,52 @@ size = Vector2(46, 5.5)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rkrra"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_cjc5h"]
+
+[sub_resource type="Animation" id="Animation_35hww"]
+resource_name = "platforms_movement"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Plataforma_01:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 5, 9, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2350, 600), Vector2(1450, 600), Vector2(1450, 600), Vector2(2350, 600), Vector2(2350, 600)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Plataforma_02:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4, 5, 9, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(3500, 300), Vector2(3500, 700), Vector2(3500, 700), Vector2(3500, 300), Vector2(3500, 300)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Plataforma_03:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4, 5, 9, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(3900, 700), Vector2(3900, 300), Vector2(3900, 300), Vector2(3900, 700), Vector2(3900, 700)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4npbe"]
+_data = {
+"platforms_movement": SubResource("Animation_35hww")
+}
 
 [node name="Level_3" type="Node2D"]
 z_index = 1
@@ -147,7 +193,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("6_s5ucj")
 
 [node name="Plataforma_01" type="StaticBody2D" parent="."]
-position = Vector2(2000, 600)
+position = Vector2(2350, 600)
 scale = Vector2(4, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma_01"]
@@ -157,7 +203,7 @@ shape = SubResource("RectangleShape2D_vn4jl")
 texture = ExtResource("7_2dt8l")
 
 [node name="Plataforma_02" type="StaticBody2D" parent="."]
-position = Vector2(3500, 400)
+position = Vector2(3500, 300)
 scale = Vector2(4, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma_02"]
@@ -184,7 +230,7 @@ scale = Vector2(1, 10000)
 shape = SubResource("SegmentShape2D_cjc5h")
 
 [node name="Plataforma_03" type="StaticBody2D" parent="."]
-position = Vector2(3900, 500)
+position = Vector2(3900, 700)
 scale = Vector2(4, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma_03"]
@@ -192,6 +238,12 @@ shape = SubResource("RectangleShape2D_vn4jl")
 
 [node name="Sprite2D" type="Sprite2D" parent="Plataforma_03"]
 texture = ExtResource("7_2dt8l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4npbe")
+}
+autoplay = "platforms_movement"
 
 [connection signal="end_rune_draw" from="CanvasLayer/RuneTable" to="Player" method="_on_rune_table_end_rune_draw"]
 [connection signal="end_rune_draw" from="CanvasLayer/RuneTable" to="Player/ShadowObjectCreator" method="_on_rune_table_end_rune_draw"]
