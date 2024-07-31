@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://berogrj7o6mcd"]
+[gd_scene load_steps=37 format=3 uid="uid://berogrj7o6mcd"]
 
 [ext_resource type="Script" path="res://furlan_levels/level_furlan5.gd" id="1_jxenw"]
 [ext_resource type="PackedScene" uid="uid://b34246moptxfd" path="res://Scenes/UIs/rune_table.tscn" id="1_rpvq6"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://n4gqvv2fl3wx" path="res://Graphics/placa de madeira.png" id="6_g6d0j"]
 [ext_resource type="Texture2D" uid="uid://bvnvsi5rk5cp2" path="res://Graphics/placa de madeira_3.png" id="9_fgq68"]
 [ext_resource type="PackedScene" uid="uid://cmpqy0u7ubu8j" path="res://Scenes/shadow_enemy.tscn" id="10_u5bqg"]
+[ext_resource type="PackedScene" uid="uid://b0crxrdn481u4" path="res://Scenes/pause_menu.tscn" id="11_djrh6"]
+[ext_resource type="AudioStream" uid="uid://ctqgvg6smcack" path="res://sound/backgroundMusic.wav" id="12_5b4tt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h3hvs"]
 size = Vector2(39, 96)
@@ -265,7 +267,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("6_g6d0j")
 
 [node name="placa_02" type="Sprite2D" parent="."]
-position = Vector2(7200, 600)
+position = Vector2(7198, 639)
 scale = Vector2(4, 4)
 texture = ExtResource("9_fgq68")
 
@@ -339,6 +341,14 @@ scale = Vector2(4, 4)
 [node name="shadow_enemy2" parent="." instance=ExtResource("10_u5bqg")]
 position = Vector2(4527, 385)
 scale = Vector2(4, 4)
+
+[node name="pause_menu" parent="." instance=ExtResource("11_djrh6")]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_5b4tt")
+volume_db = -25.0
+autoplay = true
 
 [connection signal="end_rune_draw" from="CanvasLayer/RuneTable" to="Player" method="_on_rune_table_end_rune_draw"]
 [connection signal="end_rune_draw" from="CanvasLayer/RuneTable" to="Player/ShadowObjectCreator" method="_on_rune_table_end_rune_draw"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bndrp761hmkb"]
+[gd_scene load_steps=33 format=3 uid="uid://bndrp761hmkb"]
 
 [ext_resource type="PackedScene" uid="uid://b34246moptxfd" path="res://Scenes/UIs/rune_table.tscn" id="1_fhhn1"]
 [ext_resource type="Script" path="res://furlan_levels/level_furlan4.gd" id="1_wpguf"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://6gxjnt83nn0s" path="res://Graphics/plataforma de madeira.png" id="8_4sevy"]
 [ext_resource type="Texture2D" uid="uid://bvnvsi5rk5cp2" path="res://Graphics/placa de madeira_3.png" id="9_6vpa8"]
 [ext_resource type="PackedScene" uid="uid://cmpqy0u7ubu8j" path="res://Scenes/shadow_enemy.tscn" id="11_0j7xh"]
+[ext_resource type="PackedScene" uid="uid://b0crxrdn481u4" path="res://Scenes/pause_menu.tscn" id="12_j5ho4"]
+[ext_resource type="AudioStream" uid="uid://ctqgvg6smcack" path="res://sound/backgroundMusic.wav" id="13_n7l3f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h3hvs"]
 size = Vector2(39, 96)
@@ -296,6 +298,14 @@ position = Vector2(345, 596)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_area"]
 position = Vector2(2.5, 2)
 shape = SubResource("RectangleShape2D_mro5u")
+
+[node name="pause_menu" parent="." instance=ExtResource("12_j5ho4")]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_n7l3f")
+volume_db = -25.0
+autoplay = true
 
 [connection signal="end_rune_draw" from="CanvasLayer/RuneTable" to="Player" method="_on_rune_table_end_rune_draw"]
 [connection signal="end_rune_draw" from="CanvasLayer/RuneTable" to="Player/ShadowObjectCreator" method="_on_rune_table_end_rune_draw"]

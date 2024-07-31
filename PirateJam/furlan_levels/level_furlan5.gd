@@ -31,7 +31,7 @@ func _on_end_camera_area_body_entered(body):
 
 func _on_level_end_area_body_entered(body):
 	if body is alchemist:
-		get_tree().change_scene_to_file("res://furlan_levels/level_furlan2.tscn")
+		get_tree().change_scene_to_file("res://Scenes/finalScene.tscn")
 
 func _on_hurt_area_body_entered(body):
 	if body is monster_shadow:

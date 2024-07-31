@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bo2cbakt7bwsn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqqsx"]
+bg_color = Color(0, 0, 0, 0.196078)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k7myd"]
+
+[resource]
+Button/styles/focus = null
+Button/styles/hover = SubResource("StyleBoxFlat_uqqsx")
+Button/styles/normal = SubResource("StyleBoxEmpty_k7myd")
+Button/styles/pressed = null

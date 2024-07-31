@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0crxrdn481u4"]
+
+[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_2w8js"]
+[ext_resource type="Texture2D" uid="uid://4j8jdtjdv03i" path="res://Graphics/menus/pause.png" id="2_idwha"]
+[ext_resource type="Theme" uid="uid://bo2cbakt7bwsn" path="res://Themes/button_theme.tres" id="3_74g40"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_87d4q"]
+action = &"ui_cancel"
+
+[sub_resource type="Shortcut" id="Shortcut_nvjea"]
+events = [SubResource("InputEventAction_87d4q")]
+
+[node name="pause_menu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_2w8js")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(2.66667, 2.66667)
+texture = ExtResource("2_idwha")
+
+[node name="resume" type="Button" parent="."]
+offset_left = 657.0
+offset_top = 362.0
+offset_right = 804.0
+offset_bottom = 403.0
+theme = ExtResource("3_74g40")
+shortcut = SubResource("Shortcut_nvjea")
+
+[node name="quit" type="Button" parent="."]
+offset_left = 671.0
+offset_top = 421.0
+offset_right = 776.0
+offset_bottom = 462.0
+theme = ExtResource("3_74g40")
+
+[connection signal="pressed" from="resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

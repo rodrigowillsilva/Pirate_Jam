@@ -1,0 +1,152 @@
+[gd_scene load_steps=20 format=3 uid="uid://by6inxp8uokc"]
+
+[ext_resource type="Texture2D" uid="uid://cjlfe1qk1v1qb" path="res://Graphics/menus/menu2.2.png" id="1_aujlr"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_qu3jt"]
+[ext_resource type="Theme" uid="uid://bo2cbakt7bwsn" path="res://Themes/button_theme.tres" id="2_e4hq3"]
+[ext_resource type="AudioStream" uid="uid://ogt0kay1uvk6" path="res://sound/menuMusic.wav" id="4_v4hng"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehnrg"]
+atlas = ExtResource("1_aujlr")
+region = Rect2(0, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sf4y1"]
+atlas = ExtResource("1_aujlr")
+region = Rect2(480, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paruv"]
+atlas = ExtResource("1_aujlr")
+region = Rect2(960, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws2tc"]
+atlas = ExtResource("1_aujlr")
+region = Rect2(1440, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yl4ag"]
+atlas = ExtResource("1_aujlr")
+region = Rect2(1920, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gb1is"]
+atlas = ExtResource("1_aujlr")
+region = Rect2(2400, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwdpg"]
+atlas = ExtResource("1_aujlr")
+region = Rect2(2880, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvipq"]
+atlas = ExtResource("1_aujlr")
+region = Rect2(3360, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vh7st"]
+atlas = ExtResource("1_aujlr")
+region = Rect2(3840, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ws1s"]
+atlas = ExtResource("1_aujlr")
+region = Rect2(4320, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dynvm"]
+atlas = ExtResource("1_aujlr")
+region = Rect2(4800, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0qbd"]
+atlas = ExtResource("1_aujlr")
+region = Rect2(5280, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqkoe"]
+atlas = ExtResource("1_aujlr")
+region = Rect2(5760, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ki6ld"]
+atlas = ExtResource("1_aujlr")
+region = Rect2(6240, 0, 480, 270)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tj7tr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehnrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sf4y1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paruv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws2tc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yl4ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gb1is")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwdpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvipq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vh7st")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ws1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dynvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0qbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqkoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ki6ld")
+}],
+"loop": true,
+"name": &"anim",
+"speed": 7.0
+}]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qu3jt")
+
+[node name="backGround" type="AnimatedSprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(2.66667, 2.66667)
+sprite_frames = SubResource("SpriteFrames_tj7tr")
+animation = &"anim"
+frame_progress = 0.945626
+
+[node name="start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1051.0
+offset_top = 144.0
+offset_right = 1240.0
+offset_bottom = 216.0
+theme = ExtResource("2_e4hq3")
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1085.0
+offset_top = 235.0
+offset_right = 1216.0
+offset_bottom = 288.0
+theme = ExtResource("2_e4hq3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_v4hng")
+volume_db = -25.0
+autoplay = true
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
