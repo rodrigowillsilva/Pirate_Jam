@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ba8oyt5u2q0kr"]
+[gd_scene load_steps=25 format=3 uid="uid://ba8oyt5u2q0kr"]
 
 [ext_resource type="Script" path="res://furlan_levels/level_furlan1.gd" id="1_4fv6a"]
 [ext_resource type="PackedScene" uid="uid://b34246moptxfd" path="res://Scenes/UIs/rune_table.tscn" id="1_dscw2"]
@@ -53,6 +53,9 @@ size = Vector2(46, 5.5)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_xi3rd"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pyj6i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x546q"]
+size = Vector2(43, 100)
 
 [node name="Level_1" type="Node2D"]
 z_index = 1
@@ -223,6 +226,13 @@ rotation = 3.14159
 scale = Vector2(1, 20)
 shape = SubResource("SegmentShape2D_pyj6i")
 
+[node name="hurt_area" type="Area2D" parent="."]
+position = Vector2(345, 596)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_area"]
+position = Vector2(2.5, 2)
+shape = SubResource("RectangleShape2D_x546q")
+
 [connection signal="end_rune_draw" from="CanvasLayer/RuneTable" to="Player" method="_on_rune_table_end_rune_draw"]
 [connection signal="end_rune_draw" from="CanvasLayer/RuneTable" to="Player/ShadowObjectCreator" method="_on_rune_table_end_rune_draw"]
 [connection signal="end_spell" from="Player/ShadowObjectCreator" to="Player" method="_on_shadow_object_creator_end_spell"]
@@ -230,3 +240,4 @@ shape = SubResource("SegmentShape2D_pyj6i")
 [connection signal="body_entered" from="checkpoint_area" to="." method="_on_checkpoint_area_body_entered"]
 [connection signal="body_entered" from="end_camera_area" to="." method="_on_end_camera_area_body_entered"]
 [connection signal="body_entered" from="level_end_area" to="." method="_on_level_end_area_body_entered"]
+[connection signal="body_entered" from="hurt_area" to="." method="_on_hurt_area_body_entered"]
