@@ -68,4 +68,3 @@ func on_state_change(state: State, new_state: String) -> void:
 	current_state.exit()
 	current_state = states.get(new_state.to_lower())
 	current_state.enter()
-
